@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .container {
+        padding: 20px;
+        margin: 50px auto 20px;
+        max-width: 1200px;
+        position: relative;
+      }
+      .clear-fix {
+        overflow: auto;
+      }
+      .clear-fix::after,
+      .clear-fix::before {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      .box-container {
+        position: relative;
+        height: 600px;
+        width: 600px;
+        background: rgba(255, 251, 23, 0.315);
+        margin: 0 auto;
+        overflow: hidden;
+      }
+      #box {
+        position: absolute;
+        display: block;
+        width: 50px;
+        height: 50px;
+        border: solid 1px #fff;
+        border-radius: 5px;
+        background-color: rgba(253, 1, 199, 0.45);
+        box-shadow: -3px 5px 10px rgba(0, 0, 0, 0.2);
+      }
+      .position-logger {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+      }
+      .position-logger div span {
+        font-weight: 500;
+        padding: 5px;
+        font-weight: 800;
+        display: inline-block;
+        margin-top: 5px;
+        font-size: 22px;
+      }
+
+      .bg-primary {
+        background-color: rgba(6, 150, 216, 0.671);
+        color: white;
+      }
+      .bg-secondary {
+        background-color: rgba(216, 6, 205, 0.671);
+        color: white;
+      }
+      .bg-info {
+        background-color: rgba(255, 0, 43, 0.658);
+        color: white;
+      }
+
+      .one-third {
+        position: relative;
+        float: left;
+        width: 32%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .one-third:nth-of-type(3n-1) {
+        margin-right: 2%;
+        margin-left: 2%;
+      }
+      .two-third {
+        position: relative;
+        float: left;
+        display: block;
+        padding: 10px;
+        width: 64%;
+        margin-top: 10px;
+      }
+      .two-third:nth-child(even) {
+        margin-left: 4%;
+      }
+      .two-third:nth-child(odd) {
+        margin-right: 4%;
+      }
+
+      .spans span {
+        padding: 8px 5px;
+        display: inline-block;
+        margin: 5px;
+        border-radius: 3px;
+        background-color: crimson;
+        color: white;
+      }
+      .spans span:nth-child(3n - 1) {
+        background: green;
+      }
+      .form-group {
+        display: block;
+        width: 90%;
+        margin: 5px auto;
+        padding: 5px;
+      }
+      .form-group label {
+        display: block;
+        font-size: 14px;
+        color: rgba(6, 150, 216, 0.8);
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
+      .form-group .form-control {
+        display: block;
+        width: 100%;
+        padding: 8px 5px 8px 10px;
+        margin-top: 5px;
+        border-radius: 4px;
+        border: solid 2px rgba(122, 122, 122, 0.3);
+        box-shadow: -2px 5px 10px rgba(212, 212, 212, 0.623);
+      }
+      .form-group .form-control:focus,
+      .form-group .form-control:active {
+        outline: none;
+        border: solid 2px rgba(6, 150, 216, 0.8);
+      }
+      .btn {
+        display: inline-block;
+        padding: 5px 15px;
+        font-size: 16px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .btn:disabled {
+        cursor: not-allowed;
+      }
+      .one-fourth {
+        position: relative;
+        display: block;
+        width: 22%;
+        padding: 10px;
+        display: block;
+        text-align: center;
+        float: left;
+        margin-right: 3%;
+        border-radius: 10px;
+        border: solid 1px white;
+        font-weight: 500px;
+        min-height: 80px;
+      }
+      .one-fourth:last-child {
+        margin-right: 1.5%;
+      }
+      .one-fourth:first-child {
+        margin-left: 1.5%;
+      }
+      .show-error {
+        display: none;
+        background: rgb(252, 20, 89);
+        color: white;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 10px auto 5px;
+        border: solid 2px crimson;
+        font-weight: 600;
+        font-size: 14px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container clear-fix">
+      <div class="one-third">
+        <form id="form" method="GET">
+          <div class="form-group">
+            <label for="Distance">Distance</label>
+            <input
+              id="distance"
+              name="distance"
+              type="number"
+              class="form-control"
+              value="0"
+            />
+          </div>
+          <div class="form-group">
+            <label for="direction">Degree</label>
+            <input
+              id="degree"
+              name="direction"
+              type="number"
+              class="form-control"
+              value="0"
+            />
+          </div>
+          <div class="form-group">
+            <label for="velocity">Velocity</label>
+            <input
+              id="velocity"
+              name="velocity"
+              type="number"
+              class="form-control"
+              value="0"
+            />
+          </div>
+          <div class="form-group">
+            <button id="lunch" type="submit" class="btn bg-primary">
+              Lunch
+            </button>
+            <button id="reset" type="button" class="btn bg-secondary">
+              Reset
+            </button>
+          </div>
+        </form>
+        <div class="show-error">
+          <p>there is an error</p>
+        </div>
+      </div>
+      <div class="two-third">
+        <div class="position-logger clear-fix">
+          <div class="one-fourth bg-primary">
+            <h4>X_Position</h4>
+            <span id="show-x-pos">0</span>px
+          </div>
+          <div class="one-fourth bg-secondary">
+            <h4>Y_Position</h4>
+            <span id="show-y-pos">0</span>px
+          </div>
+          <div class="one-fourth bg-info">
+            <h4>Direction</h4>
+            <span id="show-direction">0</span>deg
+          </div>
+          <div class="one-fourth bg-secondary">
+            <h4>Velocity</h4>
+            <span id="show-velocity">0</span>px/ms
+          </div>
+        </div>
+        <div class="box-container clear-fix">
+          <div id="box"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
